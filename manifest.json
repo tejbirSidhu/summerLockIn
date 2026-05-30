@@ -2,7 +2,7 @@
   "name": "Lock In",
   "short_name": "Lock In",
   "description": "Daily habit tracker with nightly intentions",
-  "start_url": "/",
+  "start_url": "/summerLockIn/",
   "display": "standalone",
   "background_color": "#0a0a0f",
   "theme_color": "#0a0a0f",
