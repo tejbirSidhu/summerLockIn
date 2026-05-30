@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,14 +8,15 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Lock In">
 <title>Lock In</title>
-<link rel="manifest" href="manifest.json">
+<link rel="manifest" href="/summerLockIn/manifest.json">
+<link rel="apple-touch-icon" href="/summerLockIn/icon-192.png">
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 /* ── DAILY THEMES ── true role inversions ──
    Each day either: dark bg + light/gold text (classic)
                  OR light/colored bg + dark text (inverted)
 */
-
+ 
 /* Sunday — DARK: Deep navy bg, gold text (classic Nishan Sahib) */
 body.theme-0 {
   --bg:#0c1020; --bg2:#111828; --bg3:#1a2638;
@@ -25,7 +27,7 @@ body.theme-0 {
   --ring-start:#1a2638; --ring-end:#c8a03c;
   --nav-bg:rgba(8,12,22,0.92);
 }
-
+ 
 /* Monday — INVERTED: Warm gold/amber bg, deep navy text */
 body.theme-1 {
   --bg:#c8900a; --bg2:#b07808; --bg3:#986606;
@@ -36,7 +38,7 @@ body.theme-1 {
   --ring-start:#b07808; --ring-end:#0c1a3a;
   --nav-bg:rgba(150,100,4,0.95);
 }
-
+ 
 /* Tuesday — DARK: Near-black bg, ice blue / silver text */
 body.theme-2 {
   --bg:#06080f; --bg2:#0a0e1a; --bg3:#101828;
@@ -47,7 +49,7 @@ body.theme-2 {
   --ring-start:#101828; --ring-end:#7eaed8;
   --nav-bg:rgba(4,6,14,0.94);
 }
-
+ 
 /* Wednesday — INVERTED: Navy bg becomes the accent; gold bg with navy type */
 body.theme-3 {
   --bg:#1a2d50; --bg2:#142240; --bg3:#0e1830;
@@ -58,7 +60,7 @@ body.theme-3 {
   --ring-start:#0e1830; --ring-end:#e8c86a;
   --nav-bg:rgba(10,18,40,0.94);
 }
-
+ 
 /* Thursday — INVERTED: Kesri / saffron bg, white + navy text */
 body.theme-4 {
   --bg:#c2560a; --bg2:#aa4408; --bg3:#923206;
@@ -69,7 +71,7 @@ body.theme-4 {
   --ring-start:#aa4408; --ring-end:#ffffff;
   --nav-bg:rgba(140,60,4,0.95);
 }
-
+ 
 /* Friday — DARK: Pure black bg, crisp gold lines (minimal, clean pre-weekend) */
 body.theme-5 {
   --bg:#080808; --bg2:#0f0f0f; --bg3:#181818;
@@ -80,7 +82,7 @@ body.theme-5 {
   --ring-start:#181818; --ring-end:#c8a03c;
   --nav-bg:rgba(4,4,4,0.96);
 }
-
+ 
 /* Saturday — INVERTED: Ivory/cream bg, deep navy text (rest day, soft) */
 body.theme-6 {
   --bg:#f0e6cc; --bg2:#e4d8b8; --bg3:#d8caa4;
@@ -91,16 +93,16 @@ body.theme-6 {
   --ring-start:#d8caa4; --ring-end:#1a2d4a;
   --nav-bg:rgba(220,205,175,0.97);
 }
-
+ 
 * { box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
-
+ 
 body {
   font-family:'DM Sans',sans-serif;
   background:var(--bg); color:var(--text);
   min-height:100svh; overflow-x:hidden;
   transition: background 0.6s ease;
 }
-
+ 
 body::before {
   content:''; position:fixed; inset:0; z-index:0;
   background:
@@ -108,13 +110,13 @@ body::before {
     radial-gradient(ellipse 50% 35% at 85% 85%, var(--grad-c) 0%, transparent 60%);
   pointer-events:none;
 }
-
+ 
 /* corner deco */
 .nishan-corner { position:fixed; top:0; right:0; z-index:0; width:110px; height:110px; pointer-events:none; opacity:0.1; }
 .nishan-corner-bl { position:fixed; bottom:80px; left:0; z-index:0; width:80px; height:80px; pointer-events:none; opacity:0.06; transform:rotate(180deg); }
-
+ 
 #app { position:relative; z-index:1; max-width:430px; margin:0 auto; padding:0 0 100px; }
-
+ 
 /* header */
 .header { padding:52px 24px 16px; display:flex; align-items:flex-end; justify-content:space-between; }
 .day-label {
@@ -131,16 +133,16 @@ body::before {
 }
 .streak-num { font-family:'Cinzel'; font-size:26px; line-height:1; color:var(--gold); }
 .streak-lbl { font-size:10px; font-weight:600; color:var(--muted); letter-spacing:1px; text-transform:uppercase; }
-
+ 
 /* theme badge */
 .theme-badge {
   margin:0 24px 10px; display:flex; align-items:center; gap:8px;
   font-size:11px; color:var(--muted); letter-spacing:0.5px;
 }
 .theme-swatch { width:8px; height:8px; border-radius:50%; background:var(--accent); }
-
+ 
 .gold-divider { height:1px; margin:0 24px 12px; background:linear-gradient(90deg,transparent,var(--accent),transparent); opacity:0.3; }
-
+ 
 /* weekly cards */
 .weekly-row { margin:0 24px 8px; display:flex; gap:8px; }
 .weekly-card {
@@ -169,7 +171,7 @@ body::before {
 .wk-status.progress { color:var(--muted); }
 @keyframes goldGlow { 0%,100%{box-shadow:0 0 6px rgba(200,160,60,0.2)} 50%{box-shadow:0 0 18px rgba(200,160,60,0.5)} }
 .weekly-card.above-target { animation:goldGlow 2s ease infinite; border-color:rgba(200,160,60,0.4); }
-
+ 
 /* progress ring */
 .progress-ring-wrap {
   margin:0 24px 8px; background:var(--card-bg); border:1px solid var(--border);
@@ -183,7 +185,7 @@ body::before {
 .progress-items { display:flex; flex-direction:column; gap:5px; }
 .prog-item { font-size:13px; display:flex; align-items:center; gap:8px; }
 .prog-dot { width:6px; height:6px; border-radius:50%; flex-shrink:0; }
-
+ 
 /* intentions */
 .intentions-banner {
   margin:0 24px 8px; background:var(--card-bg);
@@ -195,7 +197,7 @@ body::before {
 .intention-item { font-size:13px; color:var(--text); padding:3px 0; display:flex; align-items:center; gap:8px; }
 .intention-num { font-family:'DM Mono'; font-size:10px; color:var(--accent); font-weight:500; }
 .no-intentions { font-size:13px; color:var(--muted); font-style:italic; }
-
+ 
 /* section */
 .section { margin:0 24px 6px; }
 .section-title {
@@ -204,7 +206,7 @@ body::before {
   display:flex; align-items:center; gap:8px;
 }
 .section-title::after { content:''; flex:1; height:1px; background:linear-gradient(90deg,var(--border),transparent); }
-
+ 
 /* habit row */
 .habit-row {
   display:flex; align-items:center; gap:12px;
@@ -236,7 +238,7 @@ body::before {
 .habit-row.auto-sat { opacity:0.6; }
 .habit-row.auto-sat .habit-name { color:var(--muted); }
 .habit-row.auto-sat .habit-check { border-color:var(--accent); background:rgba(200,160,60,0.1); }
-
+ 
 /* animations */
 @keyframes checkPop { 0%{transform:scale(0.4) rotate(-15deg)} 65%{transform:scale(1.3) rotate(5deg)} 100%{transform:scale(1) rotate(0)} }
 @keyframes rowShine { 0%{background:rgba(255,255,255,0.1)} 100%{background:rgba(255,255,255,0.04)} }
@@ -248,7 +250,7 @@ body::before {
 .progress-ring-wrap.all-done { animation:celebrationPulse 1.5s ease 3; }
 @keyframes fadeSlideIn { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
 .habit-row { animation:fadeSlideIn 0.25s ease both; }
-
+ 
 /* nav */
 .nav {
   position:fixed; bottom:0; left:50%; transform:translateX(-50%);
@@ -264,11 +266,11 @@ body::before {
 }
 .nav-btn.active { color:var(--gold); }
 .nav-icon { font-size:19px; }
-
+ 
 /* views */
 .view { display:none; }
 .view.active { display:block; }
-
+ 
 /* calendar */
 .cal-header { padding:52px 24px 16px; display:flex; align-items:center; justify-content:space-between; }
 .cal-month { font-family:'Cinzel'; font-size:34px; letter-spacing:2px; font-weight:700;
@@ -292,7 +294,7 @@ body::before {
 .cal-legend { display:flex; gap:12px; margin:14px 24px; flex-wrap:wrap; }
 .legend-item { display:flex; align-items:center; gap:6px; font-size:11px; color:var(--muted); }
 .legend-dot { width:10px; height:10px; border-radius:3px; }
-
+ 
 /* stats */
 .stats-header { padding:52px 24px 16px; }
 .stats-title { font-family:'Cinzel'; font-size:34px; letter-spacing:2px; font-weight:700;
@@ -308,7 +310,7 @@ body::before {
 .hb-bar-wrap { width:70px; height:5px; background:rgba(255,255,255,0.05); border-radius:3px; overflow:hidden; }
 .hb-bar { height:100%; border-radius:3px; background:linear-gradient(90deg,var(--card-bg),var(--accent)); }
 .hb-pct { font-family:'DM Mono'; font-size:11px; color:var(--muted); width:30px; text-align:right; }
-
+ 
 /* modal */
 .modal-overlay { position:fixed; inset:0; z-index:200; background:rgba(0,0,0,0.75); backdrop-filter:blur(8px); display:flex; align-items:flex-end; justify-content:center; opacity:0; pointer-events:none; transition:opacity 0.25s; }
 .modal-overlay.open { opacity:1; pointer-events:all; }
@@ -323,7 +325,7 @@ body::before {
 .intention-input:focus { border-color:var(--accent); }
 .modal-btn { width:100%; margin-top:14px; padding:15px; background:var(--card-bg); border:1px solid var(--accent); border-radius:14px; color:var(--gold); font-family:'Cinzel'; font-size:14px; font-weight:700; cursor:pointer; letter-spacing:1px; }
 .modal-btn-ghost { width:100%; margin-top:8px; padding:13px; background:transparent; border:1px solid var(--border); border-radius:14px; color:var(--muted); font-family:'DM Sans'; font-size:14px; cursor:pointer; }
-
+ 
 /* night gate */
 #night-gate { position:fixed; inset:0; z-index:300; background:var(--bg); display:flex; flex-direction:column; align-items:center; justify-content:center; padding:32px; transition:opacity 0.4s; }
 #night-gate.hidden { opacity:0; pointer-events:none; }
@@ -331,13 +333,13 @@ body::before {
 .gate-title { font-family:'Cinzel'; font-size:36px; letter-spacing:3px; text-align:center; margin-bottom:8px; font-weight:700; background:linear-gradient(135deg,var(--text),var(--gold)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
 .gate-sub { font-size:14px; color:var(--muted); text-align:center; margin-bottom:28px; max-width:280px; line-height:1.7; }
 .gate-form { width:100%; max-width:360px; }
-
+ 
 .day-tooltip { position:fixed; z-index:150; background:var(--bg2); border:1px solid var(--border); border-radius:10px; padding:10px 14px; font-size:12px; pointer-events:none; box-shadow:0 8px 32px rgba(0,0,0,0.5); max-width:200px; opacity:0; transition:opacity 0.15s; }
 .day-tooltip.visible { opacity:1; }
 </style>
 </head>
 <body>
-
+ 
 <!-- corner decorations -->
 <svg class="nishan-corner" viewBox="0 0 120 120" fill="none">
   <g transform="translate(15,15)" opacity="0.9">
@@ -361,7 +363,7 @@ body::before {
     <line x1="74" y1="12" x2="62" y2="6" stroke="var(--accent)" stroke-width="1.2" stroke-linecap="round"/>
   </g>
 </svg>
-
+ 
 <div id="night-gate">
   <div class="gate-khanda">☬</div>
   <div class="gate-title">Set Intentions</div>
@@ -382,7 +384,7 @@ body::before {
     <button class="modal-btn" onclick="saveGateIntentions()">☬ Lock In Tomorrow</button>
   </div>
 </div>
-
+ 
 <div id="app">
   <div class="view active" id="view-today">
     <div class="header">
@@ -397,7 +399,7 @@ body::before {
     </div>
     <div class="theme-badge"><div class="theme-swatch"></div><span id="theme-name"></span></div>
     <div class="gold-divider"></div>
-
+ 
     <div class="weekly-row">
       <div class="weekly-card" id="wk-gym-card">
         <div class="wk-title">Gym This Week</div>
@@ -410,7 +412,7 @@ body::before {
         <div class="wk-status" id="wk-santhiya-status"></div>
       </div>
     </div>
-
+ 
     <div class="progress-ring-wrap" id="progress-ring-wrap">
       <svg width="76" height="76" viewBox="0 0 76 76">
         <circle class="ring-track" cx="38" cy="38" r="30"/>
@@ -429,7 +431,7 @@ body::before {
         <div class="progress-items" id="progress-items"></div>
       </div>
     </div>
-
+ 
     <div class="intentions-banner" onclick="openIntentionsModal()">
       <div class="intentions-header">
         <div class="intentions-title">☬ Today's Intentions</div>
@@ -437,10 +439,10 @@ body::before {
       </div>
       <div id="intentions-display"></div>
     </div>
-
+ 
     <div id="habits-container"></div>
   </div>
-
+ 
   <div class="view" id="view-calendar">
     <div class="cal-header">
       <div class="cal-month" id="cal-month-label"></div>
@@ -460,7 +462,7 @@ body::before {
       <div class="legend-item"><div class="legend-dot" style="background:rgba(248,113,113,0.13)"></div>&lt;50%</div>
     </div>
   </div>
-
+ 
   <div class="view" id="view-stats">
     <div class="stats-header"><div class="stats-title">Stats</div></div>
     <div class="stat-card">
@@ -479,13 +481,13 @@ body::before {
     </div>
   </div>
 </div>
-
+ 
 <nav class="nav">
   <button class="nav-btn active" onclick="switchView('today',this)"><span class="nav-icon">✓</span>Today</button>
   <button class="nav-btn" onclick="switchView('calendar',this)"><span class="nav-icon">📅</span>Calendar</button>
   <button class="nav-btn" onclick="switchView('stats',this)"><span class="nav-icon">📊</span>Stats</button>
 </nav>
-
+ 
 <div class="modal-overlay" id="intentions-modal">
   <div class="modal">
     <div class="modal-handle"></div>
@@ -507,9 +509,9 @@ body::before {
     <button class="modal-btn-ghost" onclick="closeModal('intentions-modal')">Cancel</button>
   </div>
 </div>
-
+ 
 <div class="day-tooltip" id="day-tooltip"></div>
-
+ 
 <script>
 // ── THEME SETUP ──
 const THEME_NAMES = [
@@ -530,7 +532,7 @@ function applyTheme() {
   if (el) el.textContent = THEME_NAMES[dow];
 }
 applyTheme();
-
+ 
 // ── SOUND ──
 var audioCtx = null;
 function getAudio() {
@@ -581,7 +583,7 @@ function playAllDoneSound() {
     });
   } catch(e) {}
 }
-
+ 
 // ── PARTICLES ──
 var PARTICLE_COLORS = ['#e8c86a','#c8a03c','#fff','#f0a040','#ffd700','#fffbe6'];
 function burst(x, y) {
@@ -598,14 +600,14 @@ function burst(x, y) {
     setTimeout(function(el){ el.remove(); }, 750, p);
   }
 }
-
+ 
 // ── DATA ──
 var DAYS_FULL = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
 var MONTHS_FULL = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 var PPL = {0:'Rest',1:'Push',2:'Pull',3:'Legs',4:'Push',5:'Pull',6:'Legs'};
 var GYM_DAYS = [1,2,3,4,5,6];
 var SA_DAYS = [1,3,5];
-
+ 
 function getHabitsForDow(dow) {
   var h = [];
   h.push({id:'riyaaz',    icon:'🎵', name:'Riyaaz',              tag:'15 min'});
@@ -623,7 +625,7 @@ function getHabitsForDow(dow) {
   h.push({id:'coding',    icon:'💻', name:'Coding / DSA Practice',tag:'1 hr'});
   return h;
 }
-
+ 
 function todayKey() {
   var d = new Date();
   if (d.getHours() < 2) d.setDate(d.getDate() - 1);
@@ -634,7 +636,7 @@ function loadData() {
 }
 function saveData(data) { localStorage.setItem('lockin_data', JSON.stringify(data)); }
 function getDow(key) { return new Date(key + 'T12:00:00').getDay(); }
-
+ 
 function getDayRecord(key) {
   var data = loadData();
   if (!data[key]) data[key] = {checked:{}, intentions:[], dow: getDow(key)};
@@ -684,7 +686,7 @@ function getWeeklyCountForKey(habitId, key, gymMode) {
   }
   return count;
 }
-
+ 
 function getPct(key) {
   var data = loadData(), rec = data[key];
   if (!rec) return null;
@@ -706,7 +708,7 @@ function getPct(key) {
   }
   return Math.round((done / total) * 100);
 }
-
+ 
 // ── WEEKLY TRACKING ──
 function getWeekKeys() {
   var now = new Date(), dow = now.getDay(), keys = [];
@@ -721,7 +723,7 @@ function getWeekKeys() {
 function renderWeeklyTrackers() {
   var keys = getWeekKeys(), todayStr = todayKey(), data = loadData();
   var labels = ['M','T','W','T','F','S','S'];
-
+ 
   // GYM
   var gymHtml = '', gymCount = 0;
   for (var i = 0; i < keys.length; i++) {
@@ -745,7 +747,7 @@ function renderWeeklyTrackers() {
     gymStat.textContent = gymCount + '/5 needed'; gymStat.className = 'wk-status progress';
     gymCard.classList.remove('above-target');
   }
-
+ 
   // SANTHIYA
   var sanHtml = '', sanCount = 0;
   for (var j = 0; j < keys.length; j++) {
@@ -769,7 +771,7 @@ function renderWeeklyTrackers() {
     sanCard.classList.remove('above-target');
   }
 }
-
+ 
 // ── NIGHT GATE (9pm) ──
 function checkNightGate() {
   var h = new Date().getHours();
@@ -794,7 +796,7 @@ function saveGateIntentions() {
   setIntentions(getTomorrowKey(), arr);
   document.getElementById('night-gate').classList.add('hidden');
 }
-
+ 
 // ── TODAY VIEW ──
 function renderToday() {
   var now = new Date(), dow = now.getDay(), key = todayKey();
@@ -809,7 +811,7 @@ function renderToday() {
   updateRing(habits, rec);
   renderWeeklyTrackers();
 }
-
+ 
 function renderHabits(habits, rec, key) {
   var container = document.getElementById('habits-container');
   var groups = [
@@ -852,7 +854,7 @@ function renderHabits(habits, rec, key) {
   }
   container.innerHTML = html;
 }
-
+ 
 function toggleHabit(e, key, habitId) {
   var rec = getDayRecord(key), newVal = !(rec.checked && rec.checked[habitId]);
   setChecked(key, habitId, newVal);
@@ -883,7 +885,7 @@ function toggleHabit(e, key, habitId) {
   }
   renderToday();
 }
-
+ 
 function updateRing(habits, rec) {
   var total = habits.length, done = 0;
   for (var i = 0; i < habits.length; i++) if (rec.checked && rec.checked[habits[i].id]) done++;
@@ -896,7 +898,7 @@ function updateRing(habits, rec) {
     '<div class="prog-item"><div class="prog-dot" style="background:' + color + '"></div><span style="color:' + color + '">' + done + '/' + total + ' habits</span></div>' +
     '<div class="prog-item"><div class="prog-dot" style="background:rgba(255,255,255,0.2)"></div><span style="color:var(--muted)">' + timeLeft + '</span></div>';
 }
-
+ 
 function renderIntentionsDisplay() {
   var key = todayKey(), intentions = getIntentions(key), el = document.getElementById('intentions-display');
   if (!intentions.length) {
@@ -908,7 +910,7 @@ function renderIntentionsDisplay() {
     el.innerHTML = html;
   }
 }
-
+ 
 // ── INTENTIONS MODAL ──
 function openIntentionsModal() {
   var key = todayKey(), ex = getIntentions(key);
@@ -931,7 +933,7 @@ function closeModal(id) { document.getElementById(id).classList.remove('open'); 
 document.getElementById('intentions-modal').addEventListener('click', function(e) {
   if (e.target === this) closeModal('intentions-modal');
 });
-
+ 
 // ── CALENDAR ──
 var calYear, calMonth;
 function initCal() { var n = new Date(); calYear = n.getFullYear(); calMonth = n.getMonth(); }
@@ -970,7 +972,7 @@ function showDayTip(e, key) {
   tip.classList.add('visible');
   setTimeout(function(){ tip.classList.remove('visible'); }, 2000);
 }
-
+ 
 // ── STATS ──
 function renderStats() {
   document.getElementById('stats-streak').textContent = calcStreak();
@@ -1013,7 +1015,7 @@ function calcHabitBreakdown(days) {
   for(var id in totals) res.push({id:id,icon:meta[id].icon,name:meta[id].name,pct:Math.round((counts[id]/totals[id])*100)});
   res.sort(function(a,b){return b.pct-a.pct;}); return res.slice(0,8);
 }
-
+ 
 // ── NAV ──
 function switchView(name, btn) {
   document.querySelectorAll('.view').forEach(function(v){v.classList.remove('active');});
@@ -1023,13 +1025,13 @@ function switchView(name, btn) {
   if(name==='calendar') renderCal();
   if(name==='stats') renderStats();
 }
-
+ 
 // ── INIT ──
 checkNightGate();
 renderToday();
 initCal();
 setInterval(renderToday, 60000);
-
+ 
 if('Notification' in window && Notification.permission==='default') {
   setTimeout(function(){ Notification.requestPermission(); }, 3000);
 }
@@ -1043,9 +1045,9 @@ if('Notification' in window && Notification.permission==='default') {
     }, target-now);
   }
 })();
-
+ 
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('./sw.js');
+  navigator.serviceWorker.register('/summerLockIn/sw.js');
 }
 </script>
 </body>
